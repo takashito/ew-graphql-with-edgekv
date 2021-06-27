@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "composite": false,
+    "declaration": false,
+    "target": "es2015",
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "isolatedModules":true,
+    "esModuleInterop": true,
+    "sourceMap": false,
+    "declarationMap": false,
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "forceConsistentCasingInFileNames": false,
+    "experimentalDecorators": false,
+    "lib": ["es2017", "esnext.asynciterable"],
+    "types": ["node"],
+    "outDir": "./dist"
+  },
+  "include": ["**/*.ts", "src/graphql"],
+  "exclude": ["node_modules", "dist"]
+}
