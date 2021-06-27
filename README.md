@@ -1,7 +1,20 @@
 # ew-graphql-with-edgekv
 REST API federation by Akamai EdgeWoker Graphql Service with additional Object Caching layber using EdgeKV
 
-<img width="732" alt="ew-graphql-rest-federation" src="https://user-images.githubusercontent.com/2292155/121985480-c4e1f880-cdcf-11eb-82f8-30f731308a3d.png">
+<img width="926" alt="ew-graphql-with-edgekv" src="https://user-images.githubusercontent.com/2292155/123541138-da670300-d77d-11eb-892d-aa45f2bb4692.png">
+
+## How it work
+
+there are 3 layers of caching for this example
+### 1, REST API Caching at Edge Server
+ REST API response will be cached at Edge Server<br>
+
+### 2, Object Data Caching at EdgeKV
+
+### 3, On Memory cache
+ when Object data is retrieved from EdgeKV cache, then it will be saved in EdgeWorker's memory space.
+ and as long as this memory cache is available and does not expires TTL, then data will be used to create response to 
+
 
 ## REST API
 3 REST API to federate and turn into Single Graphql Service <br>
