@@ -5,7 +5,7 @@ REST API federation by Akamai EdgeWoker Graphql Service with additional Object C
 
 ## How it work
 
-there are 3 layers of caching for this example
+there are 3 layers of caching
 
 #### 1, REST API Caching at Edge Server
  REST API response will be cached at Edge Server<br>
@@ -14,12 +14,12 @@ there are 3 layers of caching for this example
 #### 2, Object Data Caching at EdgeKV
  Object data will be extracted from REST API response, and saved to EdgeKV per object id. <br>
  Each object has set TTL (shorter than REST API TTL).<br>
- until it does not expires TTL, this cache will be used to create response to client.<br>
+ this cache will be used to create response to client until it expires TTL<br>
  when objects are responded from this cache, you can confirm it from Debug info {cacheHit:KV_HIT)
 
 #### 3, On Memory cache
  once Object data is retrieved from EdgeKV cache, then it will be saved in EdgeWorker's memory space.<br>
- until it does not expires TTL, this cache will be used to create response to client.<br>
+ this cache will be used to create response to client until it expires TTL<br>
  when objects are responded from this cache, you can confirm it from Debug info {cacheHit:KV_MEM_HIT)
 
 
