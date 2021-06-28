@@ -104,7 +104,7 @@ https://ewdemo.test.edgekey.net/edgekv/graphql?query={books{name,debug{url,cache
 ### Debug Info
 + url: REST API called by graphql engine
 + cacheable: REST API is cacheable or not
-+ cacheKey: Akamai CacheKey
++ cacheKey: Akamai CacheKey or EdgeKV path
 + cacheHit: 
   - KV_MEM_HIT : Object Data was responded from EdgeKV cache stored in EdgeWorker's Memory space
   - KV_HIT : Object Data was responded from EdgeKV cache
