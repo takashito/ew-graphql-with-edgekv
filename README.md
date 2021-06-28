@@ -87,18 +87,18 @@ when you hit these example URLs, you may see error due to EdgeWorker initializat
 
 ## Example URLs without Debug info
 ```
-https://ewdemo.test.edgekey.net/federation/graphql?query={book(id:3){name,authors{name},publisher{name}}}
-https://ewdemo.test.edgekey.net/federation/graphql?query={publishers{name,books{name}}}
-https://ewdemo.test.edgekey.net/federation/graphql?query={authors{name,books{name}}}
-https://ewdemo.test.edgekey.net/federation/graphql?query={books{name,authors{name},publisher{name}}}
+https://ewdemo.test.edgekey.net/edgekv/graphql?query={book(id:3){name,authors{name},publisher{name}}}
+https://ewdemo.test.edgekey.net/edgekv/graphql?query={publishers{name,books{name}}}
+https://ewdemo.test.edgekey.net/edgekv/graphql?query={authors{name,books{name}}}
+https://ewdemo.test.edgekey.net/edgekv/graphql?query={books{name,authors{name},publisher{name}}}
 ```
 
 ## Example URLs with Debug info
 ```
-https://ewdemo.test.edgekey.net/federation/graphql?query={book(id:3){name,,debug{url,cacheHit,cacheKey},authors{name,debug{url,cacheHit,cacheKey}},publisher{name,debug{url,cacheHit,cacheKey}}}}
-https://ewdemo.test.edgekey.net/federation/graphql?query={publishers{name,books{name},debug{url,cacheKey,cacheHit}}}
-https://ewdemo.test.edgekey.net/federation/graphql?query={authors{name,books{name,debug{url,cacheKey,cacheHit}}}}
-https://ewdemo.test.edgekey.net/federation/graphql?query={books{name,debug{url,cacheHit},authors{name,debug{url,cacheHit,cacheKey}},publisher{name,debug{url,cacheHit}}}}
+https://ewdemo.test.edgekey.net/edgekv/graphql?query={book(id:3){name,debug{url,cacheHit,cacheKey},authors{name,debug{url,cacheHit,cacheKey}},publisher{name,debug{url,cacheHit,cacheKey}}}}
+https://ewdemo.test.edgekey.net/edgekv/graphql?query={publishers{name,books{name},debug{url,cacheKey,cacheHit}}}
+https://ewdemo.test.edgekey.net/edgekv/graphql?query={authors{name,books{name,debug{url,cacheKey,cacheHit}}}}
+https://ewdemo.test.edgekey.net/edgekv/graphql?query={books{name,debug{url,cacheHit},authors{name,debug{url,cacheHit,cacheKey}},publisher{name,debug{url,cacheHit}}}}
 ```
 
 ### Debug Info
