@@ -7,20 +7,24 @@ REST API federation by Akamai EdgeWoker Graphql Service with additional Object C
 
 there are 3 layers of caching for this example
 
-### 1, REST API Caching at Edge Server
+#### 1, REST API Caching at Edge Server
  REST API response will be cached at Edge Server<br>
+ when data are responded from this cache, you can confirm it from Debug info {cacheHit:EDGE_MEM_HIT or EDGE_HIT etc)
 
-### 2, Object Data Caching at EdgeKV
+#### 2, Object Data Caching at EdgeKV
  Object data will be extracted from REST API response, and saved to EdgeKV per object id. <br>
  Each object has set TTL (shorter than REST API TTL).<br>
  until it does not expires TTL, this cache will be used to create response to client.<br>
+ when objects are responded from this cache, you can confirm it from Debug info {cacheHit:KV_HIT)
 
-### 3, On Memory cache
+#### 3, On Memory cache
  once Object data is retrieved from EdgeKV cache, then it will be saved in EdgeWorker's memory space.<br>
  until it does not expires TTL, this cache will be used to create response to client.<br>
+ when objects are responded from this cache, you can confirm it from Debug info {cacheHit:KV_MEM_HIT)
 
 
-## REST API
+
+## REST APIs
 3 REST API to federate and turn into Single Graphql Service <br>
 I have used mockapi servece "My JSON Server" from [typecode](https://my-json-server.typicode.com/)
 
@@ -114,21 +118,3 @@ https://ewdemo.test.edgekey.net/federation/graphql?query={books{name,debug{url,c
 
 - sending query via POST will not work due to [EdgeWorker limitation](https://learn.akamai.com/en-us/webhelp/edgeworkers/edgeworkers-user-guide/GUID-F709406E-2D67-4996-B619-91E90F04EDF2.html)
 
-- when upload bundle file to sandbox or staging, you will see error 
-```
-ERROR: got unexpected response from API:
-{
-  "type": "/sandbox-api/error-types/bad-request",
-  "title": "Bad Request.",
-  "detail": "Error in tarball file : [Error[message=uncompressed size exceeds the limit of 1 MB, type=MAX_UNCOMPRESSED_SIZE_EXCEEDED]]",
-  "instance": "/sandbox-api/error-instances/f4a1637a-c44f-43ec-b02a-f3e60c9ba3c3",
-  "status": 400,
-  "path": "/sandbox-api/v1/sandboxes/d125b951-d59e-46cf-96b5-f545449d7a1a/edgeworkers/5939",
-  "method": "PUT"
-}
-```
-This is due to the EW limitation that bundled code size need to be < 1MB.
-to avoid this error, you need to edit follwoing file
-
-```
-./node_modules/graphql-helix/dist/render-graphiql.js
